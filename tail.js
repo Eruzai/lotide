@@ -27,3 +27,13 @@ assertEqual(result.length, 0);
 array = [];
 result = tail(array);
 assertEqual(result.length, 0);
+
+//test 4
+array = [1, 2, 3];
+result = tail(array);
+assertEqual(result[0], array[1]);
+
+//test 5
+array = [1, 2, 3];
+tail(array);
+assertEqual(array.length, 3);
