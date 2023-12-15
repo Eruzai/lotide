@@ -28,10 +28,10 @@ const middle = function(arr) {
 
   if (arr.length > 2) {
     if (arr.length % 2 === 0) {
-      middleArray.push(arr[arr.length / 2] - 1);
+      middleArray.push(arr[(arr.length / 2) - 1]);
       middleArray.push(arr[arr.length / 2]);
     } else {
-      middleArray.push(((arr.length + 1) / 2));
+      middleArray.push(arr[((arr.length - 1) / 2)]);
     }
   }
 
@@ -39,9 +39,9 @@ const middle = function(arr) {
 };
 
 // test code
-assertArraysEqual(middle([1]), []);
-assertArraysEqual(middle([1, 2]), []);
-assertArraysEqual(middle([1, 2, 3]), [2]);
-assertArraysEqual(middle([1, 2, 3, 4, 5]), [3]);
-assertArraysEqual(middle([1, 2, 3, 4]), [2, 3]);
-assertArraysEqual(middle([1, 2, 3, 4, 5, 6]), [3, 4]);
+assertArraysEqual(middle(["a"]), []);
+assertArraysEqual(middle(["a", "b"]), []);
+assertArraysEqual(middle(["a", "b", "c"]), ["b"]);
+assertArraysEqual(middle(["a", "b", "c", "d", "e"]), ["c"]);
+assertArraysEqual(middle(["a", "b", "c", "d"]), ["b", "c"]);
+assertArraysEqual(middle(["a", "b", "c", "d", "e", "f"]), ["c", "d"]);
