@@ -22,31 +22,25 @@ const assertArraysEqual = function(arr1, arr2) {
   }
 };
 
-// without function will return a subset of a given array, removing unwanted elements
-const without = function(source, itemsToRemove) {
-  let wantedItems = [];
-  
-  source.forEach(item => {
-    for (let i = 0; i < itemsToRemove.length; i++) {
-      if (item === itemsToRemove[i]) {
-        return;
-      }
+// flatten function will take an array containing elements including nested arrays of elements, and return a "flattened" version of the array
+const flatten = function(arrayOfArrays) {
+  let flattenedArray = [];
 
-      if (i === itemsToRemove.length - 1) {
-        wantedItems.push(item);
+  for (let i = 0; i < arrayOfArrays.length; i++) {
+    if (Array.isArray(arrayOfArrays[i])) {
+      for (let j = 0; j < arrayOfArrays[i].length; j++) {
+        flattenedArray.push(arrayOfArrays[i][j]);
       }
+    } else {
+      flattenedArray.push(arrayOfArrays[i]);
     }
-  });
-  return wantedItems;
+  }
+  return flattenedArray;
 };
 
-// test code
-assertArraysEqual(without([1, 2, 3], [1]), [2, 3]);
-assertArraysEqual(without(["1", "2", "3"], [1, 2, "3"]), ["1", "2"]);
-assertArraysEqual(without(["1", 1, "3", 2, 3], [1, 2, "3"]), ["1", 3]);
-assertArraysEqual(without(["1", " ", null, true], [1, false, "1", ]), [" ", null, true]);
-assertArraysEqual(without([1, 2, 1, 2, 1, 2, 3,], [1, 3, true]), [2, 2, 2]);
 
-const words = ["hello", "world", "lighthouse"];
-without(words, ["lighthouse"]);
-assertArraysEqual(words, ["hello", "world", "lighthouse"]);
+// test code
+assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]);
+assertArraysEqual(flatten([[1, 2], [3, 4, 5, 6]]), [1, 2, 3, 4, 5, 6]);
+assertArraysEqual(flatten([[1,"2"], [null], 5, []]), [1, "2", null, 5]);
+assertArraysEqual(flatten([1, 2, [3, " "], " "]), [1, 2, 3, " ", " "]);
