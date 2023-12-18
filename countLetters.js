@@ -17,8 +17,6 @@ const countLetters = function(string) {
       } else {
         results[letter] = 1;
       }
-      console.log(letter);
-      console.log(results);
     }
   }
 
@@ -28,7 +26,7 @@ const countLetters = function(string) {
 // TEST CODE
 const stringToCount = "Hello there!";
 const result1 = countLetters(stringToCount);
-console.log(result1);
+
 assertEqual(result1["l"], 2);
 assertEqual(result1["e"], 3);
 assertEqual(result1["H"], 1);
