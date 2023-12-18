@@ -24,17 +24,21 @@ const eqArrays = function(arr1, arr2) {
 const eqObjects = function(object1, object2) {
   const objectKeys = Object.keys(object1);
 
-  if (Object.keys(object1).length === Object.keys(object2).length) {
-    for (let i = 0; i < objectKeys.length; i++) {
-      if (object1[objectKeys[i]] !== object2[objectKeys[i]]) {
-        eqArrays(object1[objectKeys[i]], object2[objectKeys[i]]);
-      } else {
-        return true;
+  if (Object.keys(object1).length !== Object.keys(object2).length) {
+    return false;
+  } else {
+    for (const key of objectKeys) {
+      if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
+        if (!eqArrays(object1[key], object2[key])) {
+          return false;
+        }
+      } else if (object1[key] !== object2[key]) {
+        return false;
       }
     }
-  } else {
-    return false;
   }
+
+  return true;
 };
 
 // TEST CODE
