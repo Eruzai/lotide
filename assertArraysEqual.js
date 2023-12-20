@@ -20,7 +20,7 @@ const assertArraysEqual = function(arr1, arr2) {
   } else {
     console.log(`❌❌❌ The arrays ${arr1} and ${arr2} are not equal!`);
   }
-}
+};
 
 assertArraysEqual([1, 2, 3], [1, 2, 3]);
-assertArraysEqual(["a", 2, 3], [1, , 3]);
+assertArraysEqual(["a", 2, 3], [1, " ", 3]);
