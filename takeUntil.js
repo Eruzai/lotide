@@ -32,6 +32,7 @@ const takeUntil = function(array, callback) {
       return results;
     }
   }
+  return results;
 };
 
 // TEST CODE
