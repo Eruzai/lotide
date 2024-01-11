@@ -20,7 +20,7 @@ const eqArrays = function(arr1, arr2) {
   return true; //if no issues are found (different lengths or values) a value of true is returned
 };
 
-const isObject = function(val) {
+const isObject = function(val) { // used to check if an object is actually an object
   return (typeof val === "object" && !Array.isArray(val));
 };
 
@@ -36,7 +36,7 @@ const eqObjects = function(object1, object2) {
       if (!eqArrays(object1[key], object2[key])) {
         return false;
       }
-    } else if (isObject(object1[key]) && isObject(object2[key])) {
+    } else if (isObject(object1[key]) && isObject(object2[key])) { // if both objects are indeed objects it calls eqObjects (recursion)
       if (!eqObjects(object1[key], object2[key])) {
         return false;
       }
