@@ -21,7 +21,7 @@ const eqArrays = function(arr1, arr2) {
 };
 
 const isObject = function(val) { // used to check if an object is actually an object
-  return (typeof val === "object" && !Array.isArray(val));
+  return (val !== null && typeof val === "object" && !Array.isArray(val));
 };
 
 // FUNCTION RETURNS TRUE IF BOTH OBJECTS HAVE IDENTICAL KEYS WITH IDENTICAL VALUES
