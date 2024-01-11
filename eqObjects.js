@@ -20,24 +20,30 @@ const eqArrays = function(arr1, arr2) {
   return true; //if no issues are found (different lengths or values) a value of true is returned
 };
 
+const isObject = function(val) {
+  return (typeof val === "object" && !Array.isArray(val));
+};
+
 // FUNCTION RETURNS TRUE IF BOTH OBJECTS HAVE IDENTICAL KEYS WITH IDENTICAL VALUES
 const eqObjects = function(object1, object2) {
-  const objectKeys = Object.keys(object1);
+  const objectKeys = Object.keys(object1); //creates array with keys from object1
 
-  if (objectKeys.length !== Object.keys(object2).length) {
+  if (objectKeys.length !== Object.keys(object2).length) { //compares both objects number of keys to see if not equal
     return false;
-  } else {
-    for (const key of objectKeys) {
-      if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
-        if (!eqArrays(object1[key], object2[key])) {
-          return false;
-        }
-      } else if (object1[key] !== object2[key]) {
+  }
+  for (const key of objectKeys) {
+    if (Array.isArray(object1[key]) && Array.isArray(object2[key])) { // if both objects are arrays then compares them
+      if (!eqArrays(object1[key], object2[key])) {
         return false;
       }
+    } else if (isObject(object1[key]) && isObject(object2[key])) {
+      if (!eqObjects(object1[key], object2[key])) {
+        return false;
+      }
+    } else if (object1[key] !== object2[key]) {
+      return false;
     }
   }
-
   return true;
 };
 
@@ -59,3 +65,18 @@ assertEqual(result3, true);
 const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
 const result4 = eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject); // should return false
 assertEqual(result4, false);
+
+const result5 = eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => true
+assertEqual(result5, true);
+
+const result6 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
+assertEqual(result6, false);
+
+const result7 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
+assertEqual(result7, false);
+
+const result8 = eqObjects({ a: { y: { s: 1, t: 2 }, z: 1 }, b: 2 }, { a: { y: {s: 1, t: 2 }, z: 1 }, b: 2 }); // => true
+assertEqual(result8, true);
+
+const result9 = eqObjects({ a: { y: { s: 1, t: 2 }, z: 1 }, b: { x: 1, y: { s: 1, t: { j: 1 } }, z: 3 } }, { a: { y: { s: 1, t: 2 }, z: 1 }, b: { x: 1, y: { s: 1, t: { j: 1 } }, z: 3 } }); // => true
+assertEqual(result9, true);
