@@ -31,7 +31,7 @@ The following functions are currently implemented:
 * `middle(...)`: returns the middle-most element(s) of an array
 * `assertArraysEqual(...)`: takes two arrays, compares them for equality, and outputs an appropriate message to the console
 * `assertEqual(...)`: takes two values, compares them for equality, and outputs an appropriate message to the console
-* `assertObjectsEqual(...)`: returns true if both objects have identical keys with identical values
+* `assertObjectsEqual(...)`: takes two objects, compares them for equality, and outputs an appropriate message to the console
 * `countLetters(...)`: return a count of each letter in a given string
 * `countOnly(...)`: returns an object with counts of all specified items within source object given by array.
 * `eqArrays(...)`: takes two arrays and returns true or false, based on a perfect match
