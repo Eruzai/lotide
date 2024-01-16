@@ -6,7 +6,7 @@ describe("#middle", () => {
     assert.deepEqual(middle(['a']), []);
   });
   it("returns [] for ['a', 'b']", () => {
-    assert.deepEqual(middle([['a', 'b']]), []);
+    assert.deepEqual(middle(['a', 'b']), []);
   });
   it("returns ['b'] for ['a', 'b', 'c']", () => {
     assert.deepEqual(middle(['a', 'b', 'c']), ['b']);
