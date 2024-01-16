@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
-  "version": "1.0.0",
-  "description": "",
-  "main": "assertArraysEqual.js",
+  "name": "@eruzai/lotide",
+  "version": "1.0.1",
+  "description": "A mini clone of the [Lodash](https://lodash.com) library.",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Eruzai/lotide.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kevin Levasseur",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Eruzai/lotide/issues"

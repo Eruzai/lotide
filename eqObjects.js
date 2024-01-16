@@ -1,24 +1,4 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`❌❌❌ Assertion Failed: ${actual} !== ${expected}`);
-  }
-};
-
-const eqArrays = function(arr1, arr2) {
-  if (arr1.length !== arr2.length) { //checks if both arrays are equal length. if one is longer it ends the function with a return of false.
-    return false;
-  }
-
-  for (let i = 0; i < arr1.length; i++) { //iterates through the arrays checking each coresponding value to eachother for inequality.
-    if (arr1[i] !== arr2[i]) {
-      return false;
-    }
-  }
-
-  return true; //if no issues are found (different lengths or values) a value of true is returned
-};
+const eqArrays = require("./eqArrays");
 
 const isObject = function(val) { // used to check if an object is actually an object
   return (val !== null && typeof val === "object" && !Array.isArray(val));
@@ -47,36 +27,4 @@ const eqObjects = function(object1, object2) {
   return true;
 };
 
-// TEST CODE
-const shirtObject = { color: "red", size: "medium" };
-const anotherShirtObject = { size: "medium", color: "red" };
-const result1 = eqObjects(shirtObject, anotherShirtObject); // should return true
-assertEqual(result1, true);
-
-const longSleeveShirtObject = { size: "medium", color: "red", sleeveLength: "long" };
-const result2 = eqObjects(shirtObject, longSleeveShirtObject); // should return false
-assertEqual(result2, false);
-
-const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
-const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
-const result3 = eqObjects(multiColorShirtObject, anotherMultiColorShirtObject); // should return true
-assertEqual(result3, true);
-
-const longSleeveMultiColorShirtObject = { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };
-const result4 = eqObjects(multiColorShirtObject, longSleeveMultiColorShirtObject); // should return false
-assertEqual(result4, false);
-
-const result5 = eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => true
-assertEqual(result5, true);
-
-const result6 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
-assertEqual(result6, false);
-
-const result7 = eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
-assertEqual(result7, false);
-
-const result8 = eqObjects({ a: { y: { s: 1, t: 2 }, z: 1 }, b: 2 }, { a: { y: {s: 1, t: 2 }, z: 1 }, b: 2 }); // => true
-assertEqual(result8, true);
-
-const result9 = eqObjects({ a: { y: { s: 1, t: 2 }, z: 1 }, b: { x: 1, y: { s: 1, t: { j: 1 } }, z: 3 } }, { a: { y: { s: 1, t: 2 }, z: 1 }, b: { x: 1, y: { s: 1, t: { j: 1 } }, z: 3 } }); // => true
-assertEqual(result9, true);
+module.exports = eqObjects;
