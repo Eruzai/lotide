@@ -1,3 +1,4 @@
+// searches an objects keys and performs callback function on each, returns first key that resolves callback
 const findKey = function(object, callback) {
   const keys = Object.keys(object);
 

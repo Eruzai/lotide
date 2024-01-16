@@ -1,3 +1,4 @@
+// takes two objects, compares them for equality, and outputs an appropriate message to the console
 const eqObjects = require('./eqObjects');
 
 const assertObjectsEqual = function(object1, object2) {
